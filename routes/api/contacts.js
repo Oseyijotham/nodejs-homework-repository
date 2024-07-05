@@ -1,25 +1,38 @@
-const express = require('express')
+import express from "express";
+import fs from "fs/promises";
+import path from "path";
+import {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+  updateContact,
+} from "../../models/contacts.js";
 
-const router = express.Router()
+export const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/", async (req, res, next) => {
+  listContacts(res, next);
+});
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/:contactId", async (req, res, next) => {
+  const id = req.params.contactId;
+  getContactById(id, res, next);
+});
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/", async (req, res, next) => {
+  const { name, email, phone } = req.body;
+  addContact({ name, email, phone }, res, next);
+});
 
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete("/:contactId", async (req, res, next) => {
+  const id = req.params.contactId;
+  removeContact(id, res, next);
+});
 
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.put("/:contactId", async (req, res, next) => {
+  const id = req.params.contactId;
+  updateContact(id, req.body, res, next);
+});
 
-module.exports = router
+export default router;
