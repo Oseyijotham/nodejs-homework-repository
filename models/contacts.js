@@ -66,9 +66,6 @@ export const removeContact = async (contactId, response, next) => {
       status: "success",
       code: 200,
       message: "Contact Deleted",
-      data: {
-        allData,
-      },
     });
 
     
@@ -101,7 +98,7 @@ export const addContact = async (body, response, next) => {
       status: "success",
       code: 201,
       data: {
-        allData,
+        body,
       },
     });
   } catch (error) {
