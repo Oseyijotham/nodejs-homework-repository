@@ -91,5 +91,29 @@ const getCurrentUsers = async (req, res) => {
   });
 };
 
+const updateUserSubscription = async (req, res) => {
+  const { error } = subscriptionValidation.validate(req.body);
+  if (error) {
+    throw httpError(400, error.message);
+  }
+
+  const { _id } = req.user;
+
+  const updatedUser = await User.findByIdAndUpdate(_id, req.body, {
+    new: true,
+  });
+
+  res.json({
+    email: updatedUser.email,
+    subscription: updatedUser.subscription,
+  });
+};
+
 // prettier-ignore
-export { signupUser, loginUser, logoutUser, getCurrentUsers};
+export {
+  signupUser,
+  loginUser,
+  logoutUser,
+  getCurrentUsers,
+  updateUserSubscription,
+};
