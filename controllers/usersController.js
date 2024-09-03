@@ -3,7 +3,10 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { User } from "../models/usersModel.js";
 // prettier-ignore
-import { signupValidation } from "../validations/validation.js";
+import {
+  signupValidation,
+  subscriptionValidation,
+} from "../validations/validation.js";
 import { httpError } from "../helpers/httpError.js";
 
 const { SECRET_KEY } = process.env;

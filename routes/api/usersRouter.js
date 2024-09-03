@@ -34,7 +34,7 @@ router.get("/logout", authenticateToken, ctrlWrapper(logoutUser));
 /* GET: // http://localhost:3000/api/users/current */
 router.get("/current", authenticateToken, ctrlWrapper(getCurrentUsers));
 
-
+/* PATCH: // http://localhost:3000/api/users */
 router.patch("/", authenticateToken, ctrlWrapper(updateUserSubscription));
 
 export { router };
