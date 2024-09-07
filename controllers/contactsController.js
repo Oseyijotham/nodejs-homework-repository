@@ -5,12 +5,11 @@ import { httpError } from "../helpers/httpError.js";
 
 const getAllContacts = async (req, res) => {
   const { page = 1, limit = 20, favorite } = req.query;
-  const query = favorite ? { favorite: true } : {}; // If favourite is true then query = { favorite: true } else it is equal to {}
-  //page and limit will be entered by you as query parameters in postman
+  const query = favorite ? { favorite: true } : {};
 
-  const result = await Contact.find(query) // Find the results(user) in the users collection that have { favorite: true }
-    .skip((page - 1) * limit) // If pages = 3, Skip two pages (3-1), that is skip 40 (2*20) results(user) in the users collection
-    .limit(parseInt(limit)); // Limit the number of results to 20 per page
+  const result = await Contact.find(query)
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
 
   res.json(result);
 };
