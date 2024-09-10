@@ -3,10 +3,9 @@
 ## SETUP
 
 - npm i
-- Make sure PORT, DB_HOST, SECRET_KEY is connected in .env
+- Make sure PORT, DB_HOST, SECRET_KEY, GMAIL_EMAIL, GMAIL_PASSWORD is connected in .env
 - npm run start:dev
 
-## Module 5 - Lesson 9: Work with files
+## Module 6 - Lesson 11: Work with Email
 
-- Introduction. File upload
-- Multer
+- Nodemailer
